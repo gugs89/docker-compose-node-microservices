@@ -1,0 +1,35 @@
+version: '2'
+services:
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  todo-backend:
+    image: node:latest
+    command: bash -c "cd /app/ && npm run compile && npm run dev"
+    volumes:
+      - "./todo-backend/microservices-node-example-todo-backend-mongodb/:/app/"
+    ports:
+      - "3001:3001"
+    links:
+      - mongodb
+    environment:
+      - MONGODB=mongodb
+      - MONGODB_PORT=27017
+      - PORT=3001
+
+  todo-frontend:
+    image: node:latest
+    command: bash -c "cd /app/ && npm run compile && npm run dev"
+    volumes:
+      - "./todo-frontend/microservices-node-example-todo-frontend/:/app/"
+    ports:
+      - "3000:3000"
+    links:
+      - todo-backend
+    environment:
+      - TODO_BACKEND=todo-backend
+      - TODO_BACKEND_PORT=3001
+      - PORT=3000
