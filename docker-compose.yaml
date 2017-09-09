@@ -62,20 +62,4 @@ services:
       - PORT=3000
       - VIRTUAL_HOST=*/todo/*
 
-  todo-frontend2:
-    image: node:latest
-    #command: bash -c "cd /app/ && npm run compile && npm run dev"
-    command: bash -c "cd /app/ && npm run dev"
-    #command: bash -c "cd /app/ && npm run start"
-    volumes:
-      - "./microservices-node-example-todo-frontend2/:/app/"
-    ports:
-      - 3000
-    links:
-      - todo-backend
-    environment:
-      - TODO_BACKEND=todo-backend
-      - TODO_BACKEND_PORT=3001
-      - PORT=3000
-      - VIRTUAL_HOST=*/todo/*
 
