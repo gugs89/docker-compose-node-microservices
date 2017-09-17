@@ -1,3 +1,4 @@
+# to use this compose, you need run the "npm install" and "bower install" locally before run this
 version: '2'
 services:
 
@@ -17,7 +18,7 @@ services:
       - 80
       - 8080:80
     volumes:
-#      - ./microservices-static-files-example/src/:/app/
+      - ./microservices-static-files-example/:/app/
       - ./microservices-static-files-example/nginx.conf:/etc/nginx/nginx.conf:ro
     environment:
       - VIRTUAL_HOST=*/static/*
@@ -31,8 +32,8 @@ services:
   todo-backend:
     build: ./microservices-node-example-todo-backend-mongodb/
     command: npm run dev
-#    volumes:
-#      - "./microservices-node-example-todo-backend-mongodb/:/app/"
+    volumes:
+      - ./microservices-node-example-todo-backend-mongodb/:/app/
     ports:
       - 3001
     links:
@@ -45,8 +46,8 @@ services:
   todo-frontend:
     build: ./microservices-node-example-todo-frontend/
     command: npm run dev
-#    volumes:
-#      - "./microservices-node-example-todo-frontend/:/app/"
+    volumes:
+      - ./microservices-node-example-todo-frontend/:/app/
     ports:
       - 3000
     links:
