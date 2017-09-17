@@ -41,6 +41,8 @@ services:
       - MONGODB=mongodb
       - MONGODB_PORT=27017
       - PORT=3001
+    depends_on:
+      - mongodb
 
   todo-frontend:
     build: ./microservices-node-example-todo-frontend/
