@@ -1,0 +1,9 @@
+[submodule "node-todo-backend"]
+	path = node-todo-backend
+	url = https://github.com/gustavoapolinario/node-todo-backend
+[submodule "node-todo-frontend"]
+	path = node-todo-frontend
+	url = https://github.com/gustavoapolinario/node-todo-frontend
+[submodule "nginx-static-files"]
+	path = nginx-static-files
+	url = https://github.com/gustavoapolinario/nginx-static-files

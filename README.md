@@ -1,15 +1,9 @@
 # Docker compose template for node microservices infraestruture
 
 This project depends of:
- - https://github.com/gustavoapolinario/microservices-node-example-todo-backend-mongodb
- - https://github.com/gustavoapolinario/microservices-node-example-todo-frontend
- - https://github.com/gustavoapolinario/microservices-static-files-example
-
-
-to init this project, clone in your computer and run:
-```
-./init.sh
-```
+ - https://github.com/gustavoapolinario/node-todo-backend
+ - https://github.com/gustavoapolinario/node-todo-frontend
+ - https://github.com/gustavoapolinario/nginx-static-files
 
 
 This project have a haproxy loadbalancer, service descovery and url gateway.
