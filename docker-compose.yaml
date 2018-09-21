@@ -18,24 +18,27 @@ services:
     environment:
       - VIRTUAL_HOST=*/static/*
 
-
-  mongodb:
-    image: mongo
+  dynamodb:
+    image: dwmkerr/dynamodb
+    command: -sharedDb
     ports:
-      - "27017:27017"
+      - "8000:8000"
 
   todo-backend:
     build: ./node-todo-backend/
     ports:
       - 3001
     links:
-      - mongodb
+      - dynamodb
     environment:
-      - MONGODB=mongodb
-      - MONGODB_PORT=27017
       - PORT=3001
+      - AWS_ENDPOINT=dynamodb
+      - AWS_REGION=localhost
+      - AWS_ACCESS_KEY=abc
+      - AWS_SECRET=def
+      - ENVIRONMENT=DEV
     depends_on:
-      - mongodb
+      - dynamodb
 
   todo-frontend:
     build: ./node-todo-frontend/
