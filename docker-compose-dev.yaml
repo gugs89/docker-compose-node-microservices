@@ -27,11 +27,12 @@ services:
     image: mongo
     ports:
       - "27017:27017"
-    # environment:
-    #   MONGO_INITDB_ROOT_USERNAME: root
-    #   MONGO_INITDB_ROOT_PASSWORD: example
-    #   MONGODB_USER: user 
-    #   MONGODB_PASS: pass
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=adminadmin
+      - MONGO_INITDB_DATABASE=todo
+    volumes:
+      - ./mongodb/001_users.js:/docker-entrypoint-initdb.d/001_users.js:ro
 
   todo-backend:
     build: ./node-todo-backend/
@@ -40,6 +41,8 @@ services:
       - ./node-todo-backend/:/app/
     ports:
       - 3001:3001
+    depends_on:
+      - mongodb
     links:
       - mongodb
     environment:
@@ -56,6 +59,8 @@ services:
       - ./node-todo-frontend/:/app/
     ports:
       - 3000:3000
+    depends_on:
+      - todo-backend
     links:
       - todo-backend
     environment:
