@@ -1,5 +1,14 @@
 # Docker compose template for node microservices infraestruture
 
+This project has:
+- 1 proxy server
+- 2 application servers
+- static files server
+- DB server
+
+![Diagram of estructure](https://raw.githubusercontent.com/gustavoapolinario/docker-compose-node-microservices/master/diagram.jpg)
+
+
 This project depends of:
  - https://github.com/gustavoapolinario/node-todo-backend
  - https://github.com/gustavoapolinario/node-todo-frontend
@@ -17,7 +26,7 @@ docker-compose up
 
 If you wants do modifications in code, execute the docker-compose-dev. This compose is sync your code to container.
 With Nodemon, you will see modifications in real time.
-For it, execute:
+For it, execute: (do execute as dev, remeber to install all packages dependencies inside projects)
 ```
 docker-compose -f docker-compose-dev.yaml up
 ```
